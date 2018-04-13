@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                {{ form_start(form) }}
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    <div class="form-control">
+                        {{ form_widget(form.name, {attr: {class: 'form-control'}}) }}
+                    </div>
+                </div>
+                {{ form_errors(form.name) }}
+                <div class="form-group">
+                    {{ form_label(form.gender) }}
+                    <div class="form-control">
+                        {{ form_widget(form.gender, {attr: {class: 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="form-control">
+                    {{ form_widget(form.save,  {attr: {class: 'form-control btn btn-success'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
