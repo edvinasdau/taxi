@@ -8,6 +8,9 @@
                     <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Car</th>
+                        <th>Driver</th>
+                        <th>Client</th>
                         <th>Length</th>
                         <th>Duration</th>
                         <th>Cost</th>
@@ -17,6 +20,27 @@
                     {% for trip in trips %}
                         <tr>
                             <td>{{ trip.id }}</td>
+                            <td>
+                                {% if trip.car %}
+                                {{ trip.car.make }}
+                                {% else %}
+                                    -
+                                    {% endif %}
+                            </td>
+                            <td>
+                                {% if trip.driver %}
+                                {{ trip.driver.name }}
+                                {% else %}
+                                    -
+                                    {% endif %}
+                            </td>
+                            <td>
+                                {% if trip.client %}
+                                    {{ trip.client.name }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
                             <td>{{ trip.length }} km</td>
                             <td>{{ trip.duration }} min</td>
                             <td>{{ trip.cost }} €</td>
@@ -26,6 +50,13 @@
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <a class="btn btn-warning" href="{{ 'trip/create' }}">Create trip</a>
             </div>
         </div>
     </div>

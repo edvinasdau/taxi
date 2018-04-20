@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                {{ form_start(form) }}
+                <div class="form-group">
+                        {{ form_label(form.username) }}
+                        <div class="form-control">
+                            {{ form_widget(form.username, {attr: {class: 'form-control'}}) }}
+                        </div>
+                        {{ form_label(form.password.first) }}
+                        <div class="form-control">
+                            {{ form_widget(form.password.first , {attr: {class: 'form-control'}}) }}
+                        </div>
+                    {{ form_label(form.password.second) }}
+                    <div class="form-control">
+                        {{ form_widget(form.password.second , {attr: {class: 'form-control'}}) }}
+                    </div>
+                    {{ form_label(form.roles) }}
+                    <div class="form-control">
+                        {{ form_widget(form.roles , {attr: {class: 'form-control'}}) }}
+                    </div>
+                        <div class="form-control">
+                            {{ form_widget(form.save,  {attr: {class: 'form-control btn btn-success'}}) }}
+                        </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

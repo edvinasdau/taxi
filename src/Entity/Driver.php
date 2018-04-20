@@ -33,14 +33,14 @@ class Driver
     private $age;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Car", inversedBy="driver")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Car", inversedBy="drivers")
      * @ORM\JoinTable(name="carDriver")
      */
     private $cars;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Trip", mappedBy="driver")
+     * @ORM\OneToMany(targetEntity="App\Entity\Trip", mappedBy="drivers")
      */
     private $trips;
 
@@ -48,7 +48,7 @@ class Driver
     public function __construct()
     {
         $this->cars = new ArrayCollection();
-        $this->drivers = new ArrayCollection();
+        $this->trips = new ArrayCollection();
     }
 
     public function getId()
@@ -114,7 +114,7 @@ class Driver
 
     public function addCar(Car $car)
     {
-        if(! $this->cars->contains($car)){
+        if( $this->cars->contains($car)){
             return;
         }
         $this->cars[] = $car;
@@ -126,5 +126,13 @@ class Driver
             return;
         }
         $this->cars->removeElement($car);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTrips()
+    {
+        return $this->trips;
     }
 }

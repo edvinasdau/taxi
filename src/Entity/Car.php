@@ -38,7 +38,7 @@ class Car
     private $type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Trip", mappedBy="car")
+     * @ORM\OneToMany(targetEntity="App\Entity\Trip", mappedBy="cars")
      */
     private $trips;
 
@@ -138,7 +138,7 @@ class Car
 
     public function addDriver(Driver $driver)
     {
-        if(! $this->drivers->contains($driver)){
+        if($this->drivers->contains($driver)){
             return;
         }
 

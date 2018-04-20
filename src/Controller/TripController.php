@@ -33,10 +33,13 @@ class TripController extends Controller
     public function index()
     {
         $trips = $this->tripRepository->findAll();
+//        var_dump($trips);
+//        die;
         return $this->render('trip/index.html.twig', [
             'controller_name' => 'TripController',
             'trips' => $trips
         ]);
+        
     }
 
     /**
